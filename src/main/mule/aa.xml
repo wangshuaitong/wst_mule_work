@@ -9,34 +9,21 @@ http://www.mulesoft.org/schema/mule/mule-apikit http://www.mulesoft.org/schema/m
 http://www.mulesoft.org/schema/mule/db http://www.mulesoft.org/schema/mule/db/current/mule-db.xsd
 http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd
 http://www.mulesoft.org/schema/mule/ibm-mq http://www.mulesoft.org/schema/mule/ibm-mq/current/mule-ibm-mq.xsd">
-	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="f866f998-24b8-4c23-b4b5-8c4f9754247c" >
+	<!-- <http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="f866f998-24b8-4c23-b4b5-8c4f9754247c" >
 		<http:listener-connection host="0.0.0.0" port="8081" />
-	</http:listener-config>
-	<apikit:config outboundHeadersMapName="outboundHeadersMapName" httpStatusVarName="httpStatus" doc:name="Router" doc:id="72a83e8f-216c-4ad0-bb23-330a82ada2fe" name="Router" raml="api/aa.raml" />
+	</http:listener-config> -->
+	
 	<db:config name="Database_Config" doc:name="Database Config" doc:id="d712c9e1-e874-4dab-b25d-d7ea639a2ce6" >
 		<db:oracle-connection host="localhost" user="scott" password="tiger" serviceName="orcl" />
 	</db:config>
-	<apikit:config outboundHeadersMapName="outboundHeadersMapName" httpStatusVarName="httpStatus" doc:name="Router" doc:id="521bf088-47c6-4e98-ad90-cdbd2d1f0803" name="Router1" raml="aa.raml" >
-		<apikit:flow-mappings >
-			<apikit:flow-mapping resource="/login" action="post" content-type="application/json" flow-ref="test1" />
-		</apikit:flow-mappings>
-	</apikit:config>
-	<apikit:config outboundHeadersMapName="outboundHeadersMapName" httpStatusVarName="httpStatus" doc:name="Router" doc:id="eb6a4e03-98a7-4a33-9cf2-57f2594749ea" name="Router2" raml="aa.raml" >
-		<apikit:flow-mappings >
-			<apikit:flow-mapping resource="/login" action="post" content-type="application/json" flow-ref="aaFlow" />
-		</apikit:flow-mappings>
-	</apikit:config>
+	
 	<db:config name="Database_Config1" doc:name="Database Config" doc:id="02c43350-d909-49de-9e2e-dd2167cf26c6" >
 		<db:oracle-connection host="localhost" user="scott" password="tiger" serviceName="orcl" />
 	</db:config>
 	<db:config name="Database_Config2" doc:name="Database Config" doc:id="cac12fae-3d1e-4992-a6a9-cde36870bc95" >
 		<db:oracle-connection host="localhost" user="scott" password="tiger" serviceName="orcl" />
 	</db:config>
-	<apikit:config outboundHeadersMapName="outboundHeadersMapName" httpStatusVarName="httpStatus" doc:name="Router" doc:id="ab2b1976-5f7d-4325-9a77-b38ec27d7bf7" name="Router3" raml="aa.raml" >
-		<apikit:flow-mappings >
-			<apikit:flow-mapping resource="/login" action="post" content-type="application/json" flow-ref="aaFlow" />
-		</apikit:flow-mappings>
-	</apikit:config>
+	
 	<email:smtp-config name="Email_SMTP" doc:name="Email SMTP" doc:id="cecada0f-45db-4e11-b16d-f44355603df4" >
 		<email:smtp-connection host="localhost" user="550914530@qq.com" password="tong18992094754" />
 	</email:smtp-config>
@@ -64,19 +51,27 @@ http://www.mulesoft.org/schema/mule/ibm-mq http://www.mulesoft.org/schema/mule/i
 	<db:config name="Database_Config5" doc:name="Database Config" doc:id="36b97672-b025-47e0-a14b-26198b858459" >
 		<db:oracle-connection host="localhost" user="scott" password="tiger" serviceName="orcl" />
 	</db:config>
-	<http:listener-config name="HTTP_Listener_config1" doc:name="HTTP Listener config" doc:id="54a61b0d-06ea-4fb0-8d95-c5b7d4ad90d2" >
+	<!-- <http:listener-config name="HTTP_Listener_config1" doc:name="HTTP Listener config" doc:id="54a61b0d-06ea-4fb0-8d95-c5b7d4ad90d2" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>-->
+	<db:config name="Database_Config6" doc:name="Database Config" doc:id="ef1ea1af-8d16-4641-9911-85e38251a2eb" >
+		<db:oracle-connection host="localhost" user="scott" password="tiger" serviceName="orcl" />
+	</db:config>
+	<!-- <http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="ff2727e8-3dd4-46bb-89fc-8705d62903eb" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config> -->
+	<http:listener-config name="HTTP_Listener_config1" doc:name="HTTP Listener config" doc:id="9b5ea294-985c-45c4-bf14-d07ec9463877" >
 		<http:listener-connection host="0.0.0.0" port="8081" />
 	</http:listener-config>
-	<ibm-mq:config name="IBM_MQ_Config" doc:name="IBM MQ Config" doc:id="0496f5a0-39d5-4aca-8e43-3bd256608c97" >
-		<ibm-mq:connection cssId="#[819]" >
-			<ibm-mq:connection-mode >
-				<ibm-mq:client host="sawied.top" queueManager="QM1" channel="DEV.APP.SVRCONN" />
-			</ibm-mq:connection-mode>
-		</ibm-mq:connection>
-	</ibm-mq:config>
-	<flow name="aaFlow1" doc:id="81bfea79-8f0b-4537-b83d-492a036c5564" >
-		<http:listener doc:name="Listener" doc:id="9a1dcabc-16ac-4672-b857-3517dd0eaa27" path="/aa/*" config-ref="HTTP_Listener_config"/>
-		<apikit:router doc:name="APIkit Router" doc:id="8dc3f906-8c74-4e1b-8bd1-0712eb9fcbc7" config-ref="Router4"/>
+	<apikit:config outboundHeadersMapName="outboundHeadersMapName" httpStatusVarName="httpStatus" doc:name="Router" doc:id="eb220724-986f-405e-86b4-228b555b1e4c" name="Router" raml="aa.raml" >
+		<apikit:flow-mappings >
+			<apikit:flow-mapping resource="/login" action="post" content-type="application/json" flow-ref="loginFlow" />
+			<apikit:flow-mapping resource="/register" action="post" content-type="application/json" flow-ref="registryFlow" />
+		</apikit:flow-mappings>
+	</apikit:config>
+	<flow name="aaFlow" doc:id="ac31e3d5-725b-4502-ad47-5f63dc10e317" >
+		<http:listener doc:name="Listener" doc:id="224f818f-db39-4a84-9418-45d15c72db2c" path="/api/*" config-ref="HTTP_Listener_config1"/>
+		<apikit:router doc:name="APIkit Router" doc:id="0b09a995-9a17-4522-824f-9cfd5212f3f1" config-ref="Router"/>
 	</flow>
 	<flow name="registryFlow" doc:id="88bc2545-31cd-45ca-b664-1902177856eb" >
 		<set-variable value="#[message.payload.id]" doc:name="Set Variable" doc:id="de1e19fb-7881-4c6b-8cdf-1842f703043b" variableName="id"/>
@@ -87,7 +82,7 @@ http://www.mulesoft.org/schema/mule/ibm-mq http://www.mulesoft.org/schema/mule/i
 			<db:sql >select * from mule_user where name =:a or email=:e</db:sql>
 			<db:input-parameters ><![CDATA[#[{a:vars.name,e:vars.email}]]]></db:input-parameters>
 		</db:select>
-		<choice doc:name="Choice" doc:id="3e814618-83b0-4857-87a8-679adb7bf6ce">
+		<choice doc:name="Where has user" doc:id="3e814618-83b0-4857-87a8-679adb7bf6ce">
 			<when expression="#[sizeOf(payload)&gt;0]">
 				<logger level="INFO" doc:name="Logger" doc:id="94521872-1e26-4785-8c90-2982d5998434" message="“This user already exists #[vars.name] ”" category="userExists"/>
 				<set-payload value="This user has , please try again" doc:name="Set Payload" doc:id="a5c7c9c2-3627-4275-9861-b7990f05a897" />
@@ -98,22 +93,6 @@ http://www.mulesoft.org/schema/mule/ibm-mq http://www.mulesoft.org/schema/mule/i
 					<db:input-parameters ><![CDATA[#[{a:vars.id,b:vars.name,c:vars.password,d:vars.email}]]]></db:input-parameters>
 				</db:insert>
 				<logger level="INFO" doc:name="Logger" doc:id="27fbb010-03c5-4b73-a34f-d4becefad4e5" message='"This user added successfully --&gt; #[vars.name] or #[vars.email]"' category="userRegistry"/>
-				<db:select doc:name="Select" doc:id="e2f1ec90-5c07-4365-b853-793d241e3216" config-ref="Database_Config5">
-					<db:sql >select * from mule_user</db:sql>
-				</db:select>
-				<ee:transform doc:name="Transform Message" doc:id="e329da8c-6859-44bb-b9f7-89737b81b956">
-					<ee:message>
-						<ee:set-payload><![CDATA[%dw 2.0
-output application/json
----
-users:payload map(user,index)->{
-	id:payload[index].ID,
-	name:payload[index].NAME,
-	password:payload[index].PASSWORD,
-	email:payload[index].EMAIL
-}]]></ee:set-payload>
-					</ee:message>
-				</ee:transform>
 				<email:send doc:name="Send" doc:id="4ed9e56c-f0fa-43d1-95a8-f35ceeb089a2" config-ref="Email_SMTP3" fromAddress="18992094754@163.com" subject="Information work">
 					<email:to-addresses >
 						<email:to-address value="#[vars.email]" />
@@ -140,9 +119,28 @@ users:payload map(user,index)->{
 			<db:sql >select * from mule_user where EMAIL=:a or name=:b</db:sql>
 			<db:input-parameters ><![CDATA[#[{a:vars.email,b:vars.name}]]]></db:input-parameters>
 		</db:select>
-		<choice doc:name="Choice" doc:id="b58a9e5f-2af6-4d49-9f93-c02f9a974f46" >
+		<choice doc:name="user has successfully logged in" doc:id="b58a9e5f-2af6-4d49-9f93-c02f9a974f46" >
 			<when expression="#[sizeOf(payload)&gt;0]">
+				<logger level="INFO" doc:name="user login" doc:id="dd2070e8-37f6-4d82-867e-0b8162dd8935" message="#[vars.name] is successfully!" category='""login in'/>
 				<set-payload value="succussfully! " doc:name="Set Payload" doc:id="7e30efe7-a4ad-41c2-b271-7d5094ff1595" />
+				<db:select doc:name="Select" doc:id="5c199228-5622-4ebb-9b9c-0ca8787b9d3b" config-ref="Database_Config6">
+					<db:sql >select * from mule_user where id = :a</db:sql>
+					<db:input-parameters ><![CDATA[#[{a:vars.id}]]]></db:input-parameters>
+				</db:select>
+				<ee:transform doc:name="Transform Message" doc:id="5d5f0891-2123-4930-b692-705022a33ac0" >
+					<ee:message >
+						<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+users:payload map(user,index)->
+{
+	id:payload[index].ID,
+	name:payload[index].NAME,
+	password:payload[index].PASSWORD,
+	email:payload[index].EMAIL
+}]]></ee:set-payload>
+					</ee:message>
+				</ee:transform>
 			</when>
 			<otherwise>
 				<set-payload value="This user hane none,please registry!" doc:name="Set Payload" doc:id="0b40bc4d-fe38-405f-ba92-4ae0262475bc" />
