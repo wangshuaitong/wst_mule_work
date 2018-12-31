@@ -1,0 +1,34 @@
+#%RAML 1.0
+title: wangshuaitong
+version: v1.0
+
+/login:
+  post:
+    body:
+      application/json:     
+        example: |
+          {"id":"100","password":"34","name":"sdfsdff","email":"324@qq.com"}
+
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {"message": "Login success"}   
+/register:
+  post:
+    body:
+      application/json:     
+        example: |
+          {"id":"100","password":"34","name":"sdfsdff","email":"324@qq.com"}
+
+    responses:
+      200:
+        body:
+          application/json:
+            example: |
+              {"message": "register success"} 
+
+
+
+
